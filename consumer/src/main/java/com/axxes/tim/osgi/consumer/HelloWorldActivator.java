@@ -13,11 +13,11 @@ public class HelloWorldActivator implements BundleActivator {
         ServiceReference reference = bundleContext.getServiceReference(HelloWorldService.class.getName());
 
         consumer = new HelloWorldConsumer((HelloWorldService) bundleContext.getService(reference));
-        consumer.startTimer();
     }
 
     @Override
     public void stop(BundleContext bundleContext) throws Exception {
-        consumer.stopTimer();
+        consumer.stop();
     }
+
 }

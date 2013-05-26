@@ -18,6 +18,10 @@ public class HelloWorldConsumer {
         timer.schedule(new ServiceTimerTask(service), 2500);
     }
 
+    public void stop() {
+        timer.cancel();
+    }
+
     private static class ServiceTimerTask extends TimerTask {
 
         private final HelloWorldService service;
