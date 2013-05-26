@@ -51,7 +51,7 @@
                 </configuration>
             </plugin>
 
-            <plugin>
+            <!--<plugin>
                 <groupId>com.axxes.tim.maven_plugin_demo</groupId>
                 <artifactId>maven_plugin_demo</artifactId>
                 <version>1.0-SNAPSHOT</version>
@@ -66,7 +66,7 @@
                 <configuration>
                     <checksumFile>checksum.chk</checksumFile>
                 </configuration>
-            </plugin>
+            </plugin>-->
         </plugins>
     </build>
 </project>

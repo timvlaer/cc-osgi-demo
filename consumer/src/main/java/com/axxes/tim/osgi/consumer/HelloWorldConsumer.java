@@ -2,11 +2,10 @@ package com.axxes.tim.osgi.consumer;
 
 import com.axxes.tim.osgi.provider.HelloWorldService;
 
-import javax.swing.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+import java.util.Timer;
+import java.util.TimerTask;
 
-public class HelloWorldConsumer implements ActionListener {
+public class HelloWorldConsumer {
     private final HelloWorldService service;
     private final Timer timer;
 
@@ -15,19 +14,21 @@ public class HelloWorldConsumer implements ActionListener {
 
         this.service = service;
 
-        timer = new Timer(1000, this);
+        timer = new Timer();
+        timer.schedule(new ServiceTimerTask(service), 2500);
     }
 
-    public void startTimer(){
-        timer.start();
-    }
+    private static class ServiceTimerTask extends TimerTask {
 
-    public void stopTimer() {
-        timer.stop();
-    }
+        private final HelloWorldService service;
 
-    @Override
-    public void actionPerformed(ActionEvent actionEvent) {
-        service.hello();
+        public ServiceTimerTask(HelloWorldService service) {
+            this.service = service;
+        }
+
+        @Override
+        public void run() {
+            service.hello();
+        }
     }
 }
